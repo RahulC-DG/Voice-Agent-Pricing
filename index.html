@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cascaded Voice Models Pricing Comparison</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cascaded Voice Models Pricing</h1>
+            <p class="subtitle">Compare pricing for different voice AI model combinations</p>
+        </header>
+
+        <div class="models-section">
+            <div class="model-slot stt-slot">
+                <div class="model-header">
+                    <h3>Speech-to-Text</h3>
+                    <span class="model-type">STT</span>
+                </div>
+                <div class="model-card fixed">
+                    <div class="model-name">Deepgram Nova-3</div>
+                    <div class="model-description">High-accuracy speech recognition</div>
+                    <div class="pricing-info">
+                        <span class="price">$<span id="stt-price">0.0043</span></span>
+                        <span class="unit">per minute</span>
+                    </div>
+                    <div class="pricing-controls">
+                        <label>Price per minute: $</label>
+                        <input type="number" id="stt-price-input" value="0.0043" step="0.0001" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-slot llm-slot">
+                <div class="model-header">
+                    <h3>Large Language Model</h3>
+                    <span class="model-type">LLM</span>
+                </div>
+                <div class="model-card fixed">
+                    <div class="model-name">OpenAI GPT-4</div>
+                    <div class="model-description">Advanced language understanding</div>
+                    <div class="pricing-info">
+                        <span class="price">$<span id="llm-price">0.03</span></span>
+                        <span class="unit">per 1K tokens</span>
+                    </div>
+                    <div class="pricing-controls">
+                        <label>Price per 1K tokens: $</label>
+                        <input type="number" id="llm-price-input" value="0.03" step="0.001" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="model-slot tts-slot">
+                <div class="model-header">
+                    <h3>Text-to-Speech</h3>
+                    <span class="model-type">TTS</span>
+                </div>
+                <div class="model-selector">
+                    <select id="tts-selector">
+                        <option value="cartesia">Cartesia</option>
+                        <option value="elevenlabs">ElevenLabs</option>
+                        <option value="deepgram">Deepgram Aura</option>
+                    </select>
+                </div>
+                <div class="model-card switchable" id="tts-card">
+                    <div class="model-name" id="tts-name">Cartesia</div>
+                    <div class="model-description" id="tts-description">Real-time voice synthesis</div>
+                    <div class="pricing-info">
+                        <span class="price">$<span id="tts-price">0.000025</span></span>
+                        <span class="unit" id="tts-unit">per character</span>
+                    </div>
+                    <div class="pricing-controls">
+                        <label id="tts-price-label">Price per character: $</label>
+                        <input type="number" id="tts-price-input" value="0.000025" step="0.000001" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="usage-section">
+            <h3>Usage Parameters</h3>
+            <div class="usage-controls">
+                <div class="control-group">
+                    <label for="audio-minutes">Audio Duration (minutes):</label>
+                    <input type="number" id="audio-minutes" value="10" min="1" step="1">
+                </div>
+                <div class="control-group">
+                    <label for="response-tokens">Average Response (tokens):</label>
+                    <input type="number" id="response-tokens" value="100" min="1" step="10">
+                </div>
+                <div class="control-group">
+                    <label for="response-chars">Response Characters:</label>
+                    <input type="number" id="response-chars" value="400" min="1" step="10">
+                </div>
+            </div>
+        </div>
+
+        <div class="pricing-summary">
+            <h3>Cost Breakdown</h3>
+            <div class="cost-breakdown">
+                <div class="cost-item">
+                    <div class="cost-details">
+                        <span class="cost-label">Speech-to-Text:</span>
+                        <div class="cost-breakdown-detail">
+                            <span class="current-cost">Current: $<span id="stt-cost">0.043</span></span>
+                            <span class="hourly-cost">Per 1000hrs: $<span id="stt-cost-1000h">2,580</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-item">
+                    <div class="cost-details">
+                        <span class="cost-label">Language Model:</span>
+                        <div class="cost-breakdown-detail">
+                            <span class="current-cost">Current: $<span id="llm-cost">0.003</span></span>
+                            <span class="hourly-cost">Per 1000hrs: $<span id="llm-cost-1000h">180</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-item">
+                    <div class="cost-details">
+                        <span class="cost-label">Text-to-Speech:</span>
+                        <div class="cost-breakdown-detail">
+                            <span class="current-cost">Current: $<span id="tts-cost">0.010</span></span>
+                            <span class="hourly-cost">Per 1000hrs: $<span id="tts-cost-1000h">600</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-item total">
+                    <div class="cost-details">
+                        <span class="cost-label">Total Cost:</span>
+                        <div class="cost-breakdown-detail">
+                            <span class="current-cost">Current: $<span id="total-cost">0.056</span></span>
+                            <span class="hourly-cost">Per 1000hrs: $<span id="total-cost-1000h">3,360</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h3>TTS Provider Comparison</h3>
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="provider">Provider</div>
+                    <div class="unit-cost">Unit Cost</div>
+                    <div class="total-cost">Total Cost</div>
+                    <div class="savings">vs Current</div>
+                </div>
+                <div class="comparison-row" data-provider="cartesia">
+                    <div class="provider">Cartesia</div>
+                    <div class="unit-cost">$0.000025/char</div>
+                    <div class="total-cost">$<span class="comp-total">0.010</span></div>
+                    <div class="savings">-</div>
+                </div>
+                <div class="comparison-row" data-provider="elevenlabs">
+                    <div class="provider">ElevenLabs</div>
+                    <div class="unit-cost">$0.00003/char</div>
+                    <div class="total-cost">$<span class="comp-total">0.012</span></div>
+                    <div class="savings">+20%</div>
+                </div>
+                <div class="comparison-row" data-provider="deepgram">
+                    <div class="provider">Deepgram Aura</div>
+                    <div class="unit-cost">$0.0015/min</div>
+                    <div class="total-cost">$<span class="comp-total">0.015</span></div>
+                    <div class="savings">+50%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

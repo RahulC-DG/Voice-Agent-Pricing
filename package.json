@@ -1,0 +1,44 @@
+{
+  "name": "cascaded-voice-pricing",
+  "version": "1.0.0",
+  "description": "Pricing comparison tool for cascaded voice AI models",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/ --no-browser",
+    "dev": "live-server --port=3000 --open=/ --watch=.",
+    "serve": "http-server . -p 3000 -o",
+    "build": "echo 'No build step required for static site'",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "voice",
+    "ai",
+    "pricing",
+    "comparison",
+    "deepgram",
+    "openai",
+    "cartesia",
+    "elevenlabs",
+    "text-to-speech",
+    "speech-to-text"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+} 
