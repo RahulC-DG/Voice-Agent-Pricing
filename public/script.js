@@ -36,7 +36,7 @@ const modelConfigs = {
             unitCost: '$0.00003/char'
         },
         'deepgram': {
-            name: 'Deepgram Aura',
+            name: 'Deepgram Aura 2',
             description: 'Fast neural text-to-speech',
             price: 0.0015,
             unit: 'per minute',
@@ -50,7 +50,7 @@ const modelConfigs = {
 let currentModels = {
     stt: 'deepgram-nova3',
     llm: 'openai-gpt4',
-    tts: 'cartesia'
+    tts: 'deepgram'
 };
 
 // DOM elements
@@ -88,6 +88,8 @@ const elements = {
 // Initialize the application
 function init() {
     setupEventListeners();
+    // Set the TTS selector to match the default selection
+    elements.ttsSelector.value = currentModels.tts;
     updateTTSModel();
     calculateCosts();
     updateComparison();
@@ -389,6 +391,9 @@ function calculateCostsAnimated() {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    // Ensure the TTS selector shows the correct default selection
+    elements.ttsSelector.value = currentModels.tts;
+    
     init();
     setupComparisonClickHandlers();
     
