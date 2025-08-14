@@ -13,21 +13,62 @@
             <p class="subtitle">Compare pricing for different voice AI model combinations</p>
         </header>
 
+        <div class="wizard-guidance-section">
+            <p class="guidance-compact">💡 <strong>Planning Your Voice Agent?</strong> Consider: call duration (10min), concurrency (5), latency needs, real-time streaming, self-hosting, and language support. <em>Use "Describe your agent" below for automatic model selection.</em></p>
+        </div>
+
+        <div class="nl-spec-section">
+            <h3>Describe your agent</h3>
+            
+            <div class="api-key-section">
+                <div class="api-key-row">
+                    <input id="openai-api-key" type="password" placeholder="Enter your OpenAI API key (sk-...)">
+                    <button id="save-api-key" class="api-key-btn">Save Key</button>
+                </div>
+                <small class="api-hint">🔐 Your API key is stored locally in your browser and never sent to our servers. <a href="https://platform.openai.com/api-keys" target="_blank">Get your key here</a></small>
+                <div id="api-key-status" class="api-key-status"></div>
+            </div>
+            
+            <div class="nl-row">
+                <input id="nl-spec-input" type="text" placeholder="e.g., Real-time English/Spanish support, ultra-low latency, on-prem if possible">
+                <button id="nl-generate" class="secondary">Generate plan</button>
+            </div>
+            <small class="hint">Enter your OpenAI API key above to use AI-powered model selection. Falls back to heuristic matching without a key.</small>
+            
+            <div id="nl-response" class="nl-response" style="display: none;">
+                <div class="response-header">
+                    <h4>🤖 AI Recommendation</h4>
+                </div>
+                <div id="nl-response-text" class="response-text"></div>
+            </div>
+        </div>
+
         <div class="models-section">
             <div class="model-slot stt-slot">
                 <div class="model-header">
                     <h3>Speech-to-Text</h3>
                     <span class="model-type">STT</span>
                 </div>
-                <div class="model-card fixed">
-                    <div class="model-name">Deepgram Nova-3</div>
-                    <div class="model-description">High-accuracy speech recognition</div>
+                <div class="model-selector">
+                    <select id="stt-selector">
+                        <option value="deepgram-nova3">Deepgram Nova-3</option>
+                        <option value="cartesia-ink">Cartesia Ink-Whisper</option>
+                        <option value="elevenlabs-stt">ElevenLabs STT</option>
+                    </select>
+                </div>
+                <div class="model-card fixed" id="stt-card">
+                    <div class="badge-row">
+                        <span class="badge red" id="stt-badge" style="display:none;"></span>
+                        <span class="badge gray" id="stt-selfhost-badge" style="display:none;"></span>
+                    </div>
+                    <div class="model-name" id="stt-name">Deepgram Nova-3</div>
+                    <div class="model-description" id="stt-description">High-accuracy speech recognition</div>
                     <div class="pricing-info">
                         <span class="price">$<span id="stt-price">0.0043</span></span>
-                        <span class="unit">per minute</span>
+                        <span class="unit" id="stt-unit">per minute</span>
                     </div>
                     <div class="pricing-controls">
-                        <label>Price per minute: $</label>
+                        <label id="stt-price-label">Price per minute: $</label>
                         <input type="number" id="stt-price-input" value="0.0043" step="0.0001" min="0">
                     </div>
                 </div>
@@ -38,16 +79,23 @@
                     <h3>Large Language Model</h3>
                     <span class="model-type">LLM</span>
                 </div>
+                <div class="model-selector">
+                    <select id="llm-selector">
+                        <option value="openai-gpt4o-mini">OpenAI GPT-4o-mini</option>
+                        <option value="google-gemini-flash">Google Gemini 2.5 Flash</option>
+                        <option value="google-gemini-pro">Google Gemini 2.5 Pro</option>
+                    </select>
+                </div>
                 <div class="model-card fixed">
-                    <div class="model-name">OpenAI GPT-4</div>
-                    <div class="model-description">Advanced language understanding</div>
+                    <div class="model-name" id="llm-name">OpenAI GPT-4o-mini</div>
+                    <div class="model-description" id="llm-description">Cost-effective, real-time friendly</div>
                     <div class="pricing-info">
-                        <span class="price">$<span id="llm-price">0.03</span></span>
-                        <span class="unit">per 1K tokens</span>
+                        <span class="price">$<span id="llm-price">0.0006</span></span>
+                        <span class="unit">per 1K tokens (out)</span>
                     </div>
                     <div class="pricing-controls">
-                        <label>Price per 1K tokens: $</label>
-                        <input type="number" id="llm-price-input" value="0.03" step="0.001" min="0">
+                        <label>Price per 1K tokens (avg in/out): $</label>
+                        <input type="number" id="llm-price-input" value="0.0006" step="0.0001" min="0">
                     </div>
                 </div>
             </div>
@@ -59,12 +107,16 @@
                 </div>
                 <div class="model-selector">
                     <select id="tts-selector">
-                        <option value="deepgram">Deepgram Aura 2</option>
                         <option value="cartesia">Cartesia</option>
                         <option value="elevenlabs">ElevenLabs</option>
+                        <option value="deepgram">Deepgram Aura 2</option>
                     </select>
                 </div>
                 <div class="model-card switchable" id="tts-card">
+                    <div class="badge-row">
+                        <span class="badge red" id="tts-badge" style="display:none;"></span>
+                        <span class="badge gray" id="tts-selfhost-badge" style="display:none;"></span>
+                    </div>
                     <div class="model-name" id="tts-name">Deepgram Aura 2</div>
                     <div class="model-description" id="tts-description">Fast neural text-to-speech</div>
                     <div class="pricing-info">
@@ -79,26 +131,10 @@
             </div>
         </div>
 
-        <div class="usage-section">
-            <h3>Usage Parameters</h3>
-            <div class="usage-controls">
-                <div class="control-group">
-                    <label for="audio-minutes">Audio Duration (minutes):</label>
-                    <input type="number" id="audio-minutes" value="10" min="1" step="1">
-                </div>
-                <div class="control-group">
-                    <label for="response-tokens">Average Response (tokens):</label>
-                    <input type="number" id="response-tokens" value="100" min="1" step="10">
-                </div>
-                <div class="control-group">
-                    <label for="response-chars">Response Characters:</label>
-                    <input type="number" id="response-chars" value="400" min="1" step="10">
-                </div>
-            </div>
-        </div>
+
 
         <div class="pricing-summary">
-            <h3>Cost Breakdown</h3>
+            <h3>Voice Agent Cost Breakdown</h3>
             <div class="cost-breakdown">
                 <div class="cost-item">
                     <div class="cost-details">
@@ -129,10 +165,22 @@
                 </div>
                 <div class="cost-item total">
                     <div class="cost-details">
-                        <span class="cost-label">Total Cost:</span>
+                        <span class="cost-label">Total Voice Agent Cost:</span>
                         <div class="cost-breakdown-detail">
                             <span class="current-cost">Current: $<span id="total-cost">0.056</span></span>
                             <span class="hourly-cost">Per 1000hrs: $<span id="total-cost-1000h">3,360</span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-item two-month">
+                    <div class="cost-details">
+                        <span class="cost-label">Two-Month Voice Agent Bill:</span>
+                        <div class="cost-breakdown-detail">
+                            <span class="current-cost">$<span id="two-month-bill">0.112</span></span>
+                            <span class="hourly-cost">Business usage estimate</span>
+                        </div>
+                        <div class="math-breakdown">
+                            <small id="two-month-math">5 concurrent × 8h/day × 22 days × 6 calls/h × $0.0566/call × 2 months = 5,280 calls/month</small>
                         </div>
                     </div>
                 </div>
@@ -140,12 +188,13 @@
         </div>
 
         <div class="comparison-section">
-            <h3>TTS Provider Comparison</h3>
+            <h3>Voice Agent Cost Comparison</h3>
+            <p class="comparison-subtitle">Compare total voice agent costs (STT + LLM + TTS) with different TTS providers. Click to switch.</p>
             <div class="comparison-table">
                 <div class="comparison-row header">
-                    <div class="provider">Provider</div>
-                    <div class="unit-cost">Unit Cost</div>
-                    <div class="total-cost">Total Cost</div>
+                    <div class="provider">TTS Provider</div>
+                    <div class="unit-cost">TTS Unit Cost</div>
+                    <div class="total-cost">Total Agent Cost</div>
                     <div class="savings">vs Current</div>
                 </div>
                 <div class="comparison-row" data-provider="cartesia">
@@ -165,6 +214,37 @@
                     <div class="unit-cost">$0.0015/min</div>
                     <div class="total-cost">$<span class="comp-total">0.015</span></div>
                     <div class="savings">+50%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="comparison-section">
+            <h3>STT Provider Cost Comparison</h3>
+            <p class="comparison-subtitle">Compare total voice agent costs (STT + LLM + TTS) with different STT providers. Click to switch.</p>
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="provider">STT Provider</div>
+                    <div class="unit-cost">STT Unit Cost</div>
+                    <div class="total-cost">Total Agent Cost</div>
+                    <div class="savings">vs Current</div>
+                </div>
+                <div class="comparison-row" data-provider="deepgram-nova3" data-type="stt">
+                    <div class="provider">Deepgram Nova-3</div>
+                    <div class="unit-cost">$0.0043/min</div>
+                    <div class="total-cost">$<span class="comp-total">0.047</span></div>
+                    <div class="savings">Current</div>
+                </div>
+                <div class="comparison-row" data-provider="cartesia-ink" data-type="stt">
+                    <div class="provider">Cartesia Ink-Whisper</div>
+                    <div class="unit-cost">$0.0025/min</div>
+                    <div class="total-cost">$<span class="comp-total">0.045</span></div>
+                    <div class="savings">-4%</div>
+                </div>
+                <div class="comparison-row" data-provider="elevenlabs-stt" data-type="stt">
+                    <div class="provider">ElevenLabs STT</div>
+                    <div class="unit-cost">$0/min</div>
+                    <div class="total-cost">$<span class="comp-total">0.044</span></div>
+                    <div class="savings">-6%</div>
                 </div>
             </div>
         </div>

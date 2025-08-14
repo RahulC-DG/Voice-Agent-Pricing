@@ -1,0 +1,212 @@
+{
+  "providers": {
+    "Cartesia": {
+      "meta": {
+        "use_cases": [
+          "Ultra-low latency real-time voice agents",
+          "Telephony-grade conversational systems",
+          "Streaming TTS with emotional control"
+        ],
+        "notes": "Cartesia focuses on real-time STT/TTS. No LLM. Self-host available for TTS."
+      },
+      "stt": [
+        {
+          "model": "Ink-Whisper",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 300,
+          "unit": "per_min",
+          "price": 0.003,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic"],
+          "tags": []
+        }
+      ],
+      "tts": [
+        {
+          "model": "Sonic Turbo",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 40,
+          "unit": "per_hour",
+          "price": 1.79,
+          "self_hosted": true,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic"],
+          "tags": []
+        },
+        {
+          "model": "Sonic",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 90,
+          "unit": "per_hour",
+          "price": 1.88,
+          "self_hosted": true,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic"],
+          "tags": []
+        }
+      ],
+      "llm": []
+    },
+    "Deepgram": {
+      "meta": {
+        "use_cases": [
+          "High-accuracy realtime transcription",
+          "Enterprise self-hosted deployments",
+          "Telephony and multi-speaker calls"
+        ],
+        "notes": "Deepgram offers both STT and TTS with self-host options; no LLM."
+      },
+      "stt": [
+        {
+          "model": "Nova-3",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 300,
+          "unit": "per_min",
+          "price": 0.0043,
+          "self_hosted": true,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian"],
+          "tags": []
+        }
+      ],
+      "tts": [
+        {
+          "model": "Aura 2",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 200,
+          "unit": "per_1k_chars",
+          "price": 0.03,
+          "self_hosted": true,
+          "languages": ["English (US)", "English (UK)", "English (AU)", "English (CA)", "English (IN)", "English (NZ)", "English (ZA)", "Spanish (ES)", "Spanish (MX)", "Spanish (AR)", "French (FR)", "French (CA)", "German", "Italian", "Portuguese (BR)", "Portuguese (PT)", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese (Mandarin)", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian"],
+          "tags": []
+        },
+        {
+          "model": "Aura 1",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 250,
+          "unit": "per_1k_chars",
+          "price": 0.015,
+          "self_hosted": true,
+          "languages": ["English (US)", "English (UK)", "English (AU)", "English (CA)", "English (IN)", "English (NZ)", "English (ZA)", "Spanish (ES)", "Spanish (MX)", "Spanish (AR)", "French (FR)", "French (CA)", "German", "Italian", "Portuguese (BR)", "Portuguese (PT)", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese (Mandarin)", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian"],
+          "tags": []
+        }
+      ],
+      "llm": []
+    },
+    "ElevenLabs": {
+      "meta": {
+        "use_cases": [
+          "High-quality expressive TTS",
+          "Multilingual narration and content",
+          "Voice cloning and branding"
+        ],
+        "notes": "ElevenLabs STT is batch-only (no realtime). TTS has low-latency options. No self-host for TTS/STT."
+      },
+      "stt": [
+        {
+          "model": "Speech-to-Text API",
+          "streaming": false,
+          "realtime": false,
+          "unit": "per_min",
+          "price": 0,
+          "self_hosted": false,
+          "latency_ms": null,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian"],
+          "tags": ["No Real-Time Streaming"]
+        }
+      ],
+      "tts": [
+        {
+          "model": "Flash v2.5",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 75,
+          "unit": "per_min",
+          "price": 0.10,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian"],
+          "tags": ["Option not available"]
+        },
+        {
+          "model": "Multilingual v2",
+          "streaming": true,
+          "realtime": true,
+          "latency_ms": 300,
+          "unit": "per_min",
+          "price": 0.06,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian"],
+          "tags": ["Option not available"]
+        }
+      ],
+      "llm": []
+    },
+    "OpenAI": {
+      "meta": {
+        "use_cases": [
+          "General reasoning and tool-use",
+          "Low-latency real-time LLM (4o-mini realtime)",
+          "Function calling and JSON responses"
+        ],
+        "notes": "LLM provider only; no self-host."
+      },
+      "stt": [],
+      "tts": [],
+      "llm": [
+        {
+          "model": "GPT-4o-mini",
+          "realtime": true,
+          "unit": "per_1k_tokens",
+          "price": 0.0006,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian", "Romanian", "Lithuanian", "Latvian", "Estonian", "Slovenian", "Serbian", "Bosnian", "Albanian", "Macedonian", "Maltese", "Icelandic", "Irish", "Welsh", "Basque", "Catalan", "Galician", "Swahili", "Yoruba", "Zulu", "Afrikaans", "Amharic", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Farsi", "Pashto", "Dari", "Kurdish", "Azerbaijani", "Kazakh", "Kyrgyz", "Mongolian", "Tajik", "Turkmen", "Uzbek", "Armenian", "Georgian", "Belarusian", "Moldovan", "Burmese", "Khmer", "Lao", "Sinhala", "Tibetan", "Mongolian", "Javanese", "Sundanese", "Tagalog", "Cebuano", "Maori", "Hawaiian", "Samoan", "Tongan", "Fijian"],
+          "tags": []
+        },
+        {
+          "model": "GPT-4o",
+          "realtime": true,
+          "unit": "per_1k_tokens",
+          "price": 0.015,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian", "Romanian", "Lithuanian", "Latvian", "Estonian", "Slovenian", "Serbian", "Bosnian", "Albanian", "Macedonian", "Maltese", "Icelandic", "Irish", "Welsh", "Basque", "Catalan", "Galician", "Swahili", "Yoruba", "Zulu", "Afrikaans", "Amharic", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Farsi", "Pashto", "Dari", "Kurdish", "Azerbaijani", "Kazakh", "Kyrgyz", "Mongolian", "Tajik", "Turkmen", "Uzbek", "Armenian", "Georgian", "Belarusian", "Moldovan", "Burmese", "Khmer", "Lao", "Sinhala", "Tibetan", "Mongolian", "Javanese", "Sundanese", "Tagalog", "Cebuano", "Maori", "Hawaiian", "Samoan", "Tongan", "Fijian"],
+          "tags": []
+        }
+      ]
+    },
+    "Google": {
+      "meta": {
+        "use_cases": [
+          "Fast, low-cost inference",
+          "Large-context reasoning (Pro)",
+          "Streaming responses"
+        ],
+        "notes": "LLM provider only; no self-host."
+      },
+      "stt": [],
+      "tts": [],
+      "llm": [
+        {
+          "model": "Gemini 2.5 Flash",
+          "realtime": true,
+          "unit": "per_1k_tokens",
+          "price": 0.0008,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian", "Romanian", "Lithuanian", "Latvian", "Estonian", "Slovenian", "Serbian", "Bosnian", "Albanian", "Macedonian", "Maltese", "Icelandic", "Irish", "Welsh", "Basque", "Catalan", "Galician", "Swahili", "Yoruba", "Zulu", "Afrikaans", "Amharic", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Farsi", "Pashto", "Dari", "Kurdish", "Azerbaijani", "Kazakh", "Kyrgyz", "Mongolian", "Tajik", "Turkmen", "Uzbek", "Armenian", "Georgian", "Belarusian", "Moldovan", "Burmese", "Khmer", "Lao", "Sinhala", "Tibetan", "Mongolian", "Javanese", "Sundanese", "Tagalog", "Cebuano", "Maori", "Hawaiian", "Samoan", "Tongan", "Fijian"],
+          "tags": []
+        },
+        {
+          "model": "Gemini 2.5 Pro",
+          "realtime": true,
+          "unit": "per_1k_tokens",
+          "price": 0.01,
+          "self_hosted": false,
+          "languages": ["English", "Spanish", "French", "German", "Italian", "Portuguese", "Dutch", "Polish", "Russian", "Turkish", "Japanese", "Korean", "Chinese", "Hindi", "Arabic", "Swedish", "Norwegian", "Danish", "Finnish", "Greek", "Hebrew", "Thai", "Vietnamese", "Indonesian", "Malay", "Filipino", "Ukrainian", "Czech", "Slovak", "Hungarian", "Bulgarian", "Croatian", "Romanian", "Lithuanian", "Latvian", "Estonian", "Slovenian", "Serbian", "Bosnian", "Albanian", "Macedonian", "Maltese", "Icelandic", "Irish", "Welsh", "Basque", "Catalan", "Galician", "Swahili", "Yoruba", "Zulu", "Afrikaans", "Amharic", "Bengali", "Gujarati", "Kannada", "Malayalam", "Marathi", "Nepali", "Odia", "Punjabi", "Tamil", "Telugu", "Urdu", "Farsi", "Pashto", "Dari", "Kurdish", "Azerbaijani", "Kazakh", "Kyrgyz", "Mongolian", "Tajik", "Turkmen", "Uzbek", "Armenian", "Georgian", "Belarusian", "Moldovan", "Burmese", "Khmer", "Lao", "Sinhala", "Tibetan", "Mongolian", "Javanese", "Sundanese", "Tagalog", "Cebuano", "Maori", "Hawaiian", "Samoan", "Tongan", "Fijian"],
+          "tags": []
+        }
+      ]
+    }
+  }
+} 

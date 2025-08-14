@@ -19,9 +19,23 @@ This tool helps developers and businesses evaluate the cost implications of diff
 
 - 🔄 **Real-time cost calculations** for current usage and 1000-hour scaling
 - 📊 **Interactive comparison table** with percentage differences
+- 🤖 **AI-powered model selection** using your own OpenAI API key
+- 🔐 **Secure API key storage** - keys stored locally in your browser only
+- 🎯 **Smart heuristic fallback** when no API key is provided
 - ⚙️ **Adjustable pricing parameters** for custom scenarios
 - 📱 **Responsive design** works on all devices
 - ✨ **Smooth animations** and modern UI
+
+## API Key Setup
+
+### For AI-Powered Model Selection
+1. Get your OpenAI API key from [https://platform.openai.com/api-keys](https://platform.openai.com/api-keys)
+2. Enter your key in the "Enter your OpenAI API key" field on the website
+3. Click "Save Key" - your key is stored securely in your browser's local storage
+4. Your key is never sent to our servers - it's only used for direct API calls to OpenAI
+
+### Without API Key
+The tool works perfectly without an API key using intelligent heuristic matching for the "Describe your agent" feature.
 
 ## Quick Start
 
